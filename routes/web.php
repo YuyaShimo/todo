@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.inde');
+Route::get('/folders/{id}/tasks', 'TaskController@index')->name('tasks.index');
