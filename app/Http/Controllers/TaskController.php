@@ -46,6 +46,7 @@ class TaskController extends Controller
 }
 public function showEditForm(Folder $folder, Task $task)
 {
+    
     $this->checkRelation($folder, $task);
 
     return view('tasks/edit',[
@@ -54,6 +55,7 @@ public function showEditForm(Folder $folder, Task $task)
 }
 public function edit(Folder $folder, Task $task, EditTask $request)
 {
+    
     $this->checkRelation($folder, $task);
 
     $task->title = $request->title;
