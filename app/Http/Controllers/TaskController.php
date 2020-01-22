@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public $current_folder_id;
 
     public function index(Folder $folder)
     {
