@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\CreateTask;
 use Illuminate\Support\Facades\Auth;
-
 use App\Folder;
 use App\Http\Requests\EditTask;
 use App\Task;
