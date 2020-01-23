@@ -11,3 +11,4 @@ class Folder extends Model
         return $this->hasMany('App\Task');
     }
 }
+

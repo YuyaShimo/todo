@@ -35,9 +35,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    
     public function folders()
     {
         return $this->hasMany('App\Folder');
@@ -47,3 +45,4 @@ class User extends Authenticatable
         Mail::to($this)->send(new ResetPassword($token));
     }
 }
+
