@@ -14,7 +14,10 @@ Route::group(['middleware' => 'auth'], function() {
 
         Route::get('/folders/{folder}/tasks/{task}/edit', 'TaskController@showEditForm')->name('tasks.edit');
         Route::post('/folders/{folder}/tasks/{task}/edit', 'TaskController@edit');
+
     });
+    //ユーザーページへのルーティング//
+    Route::get('/users', 'UsersController@showUsers')->name('users.showUsers');
 });
 
 Auth::routes();
