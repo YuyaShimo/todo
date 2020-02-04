@@ -15,4 +15,8 @@ class UsersController extends Controller
         //dd($ret); //デバック用の関数
         return view('users/showUsers',['item' => $ret]);
     }
+    public function editUsers()
+    {
+        return view('users/editUsers');
+    }
 }
