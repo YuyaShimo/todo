@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/users', 'UsersController@showUsers')->name('users.showUsers');
     //ユーザー名変更ページへのルーティング
     Route::get('/users/edit', 'UsersController@editUsers')->name('users.editUsers');
+    //ユーザー名変更のルーティング
+    Route::post('/users/edit','UsersController@updateUsers')->name('users.updateUsers');
 });
 
 Auth::routes();
