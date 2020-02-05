@@ -19,4 +19,16 @@ class UsersController extends Controller
     {
         return view('users/editUsers');
     }
+    public function updateUsers(Request $request)
+    {
+        $name = $request->input('name');
+
+        $users = new User();
+
+        $flight = $users->find(1);
+        $flight->name = $name;
+        $flight->save(); 
+
+        return redirect()->route('users.editUsers');
+    }
 }
