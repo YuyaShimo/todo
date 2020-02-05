@@ -9,7 +9,7 @@
 　　<div class="row">
 　　　<div class="col col-md-offset-3 col-md-6">
 　　　　<nav class="panel panel-default">
-　　　　　<div class="panel-heading">ユーザー</div>
+　　　　　<div class="panel-heading">ユーザーページ</div>
 　　　　　　<div class="panel-body">
 　　　　　　　<input type="hidden" name="_token" value="od9Wc4qsnxKtBJqalcnv3dA0e54dLL6w228t3daj">             <div class="form-group">
 　　　　　　　<label for="name">ユーザー名</label>
