@@ -10,8 +10,8 @@ class UsersController extends Controller
 {
     public function showUsers()
     {
-        $users = new User();
-        $ret = $users->select(['id','name','email'])->where('id', Auth::id())->first();
+        $user = new User();
+        $ret = $user->select(['id','name','email'])->where('id', Auth::id())->first();
         //dd($ret); //デバック用の関数
         return view('users/showUsers',['item' => $ret]);
     }
@@ -21,13 +21,14 @@ class UsersController extends Controller
     }
     public function updateUsers(Request $request)
     {
-        $name = $request->input('name');
+        
+        $name = $request->name;
 
-        $users = new User();
+        $user = new User();
 
-        $flight = $users->find(1);
-        $flight->name = $name;
-        $flight->save(); 
+        $edit_user = Auth::user();
+        $edit_user->name = $name;
+        $edit_user->save(); 
 
         return redirect()->route('users.editUsers');
     }
