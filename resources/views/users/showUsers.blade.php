@@ -14,11 +14,11 @@
       <input type="hidden" name="_token" value="od9Wc4qsnxKtBJqalcnv3dA0e54dLL6w228t3daj">
        <div class="form-group">
         <label for="name">ユーザー名</label>
-        <p>{{$item->name}}</p>
+        <p>{{$user->name}}</p>
        </div>
         <div class="form-group">
          <label for="email">メールアドレス</label>
-         <p>{{$item->email}}</p>
+         <p>{{$user->email}}</p>
         </div>
          <a href="{{ route('users.editUsers') }}">ユーザー名を編集する</a>
     </div>

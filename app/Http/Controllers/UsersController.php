@@ -8,23 +8,22 @@ use App\User;
 
 class UsersController extends Controller
 {
-    public function showUsers()
+    public function showUsers()  //ユーザー情報を取得
     {
-        $user = new User();
-        $ret = $user->select(['id','name','email'])->where('id', Auth::id())->first();
-        //dd($ret); //デバック用の関数
-        return view('users/showUsers',['item' => $ret]);
+        $user = Auth::user();
+        //$ret = $user->select(['id','name','email'])->where('id', Auth::id())->first();
+        
+        return view('users/showUsers',['user' => $user]);
     }
-    public function editUsers()
+
+    public function editUsers()  //ユーザー名編集画面へ遷移する
     {
         return view('users/editUsers');
     }
-    public function updateUsers(Request $request)
-    {
-        
-        $name = $request->name;
 
-        $user = new User();
+    public function updateUsers(Request $request)  //ユーザー名を変更する
+    {
+        $name = $request->name;
 
         $edit_user = Auth::user();
         $edit_user->name = $name;
