@@ -11,7 +11,6 @@ class UsersController extends Controller
     public function showUsers()  //ユーザー情報を取得
     {
         $user = Auth::user();
-        //$ret = $user->select(['id','name','email'])->where('id', Auth::id())->first();
         
         return view('users/showUsers',['user' => $user]);
     }
