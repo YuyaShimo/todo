@@ -8,6 +8,7 @@ use App\Folder;
 use App\Http\Requests\EditTask;
 use App\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TaskController extends Controller
 {
@@ -43,6 +44,7 @@ class TaskController extends Controller
         'id' => $folder->id,
     ]);
 }
+
 public function showEditForm(Folder $folder, Task $task)
 {
     
@@ -52,6 +54,7 @@ public function showEditForm(Folder $folder, Task $task)
         'task' => $task,
     ]);
 }
+
 public function edit(Folder $folder, Task $task, EditTask $request)
 {
     
@@ -66,6 +69,7 @@ public function edit(Folder $folder, Task $task, EditTask $request)
         'id' => $task->folder_id,
     ]);
 }
+
 private function checkRelation(Folder $folder, Task $task)
 {
     if($folder->id !== $task->folder_id) {
@@ -73,4 +77,19 @@ private function checkRelation(Folder $folder, Task $task)
     }
 }
 
+public function createShareUrl($folder,$task) //シェアボタン押下時にURLを生成
+{
+    $tasks = new Task();
+    $tasks->updateShareStat($task);
+    $share_url = route('tasks.shareshow',[
+        'task' => $task,
+        'folder' => $folder
+        ]);
+        return $share_url;
+} 
+
+public function showShareTask() //シェアしたURLを踏んだ人がログインしていなくてもtaskを閲覧できる
+{
+    
+}
 }

@@ -37,6 +37,14 @@ class Task extends Model
         return Carbon::createFromFormat('Y-m-d', $this->attributes['due_date'])
         ->format('Y/m/d');
     }
+
+    public function updateShareStat($id,$status=1)
+    {
+        $result = $this->where('id',$id)->where('share_flg','!=',1)->update([
+            'share_flg' => $status
+            ]);
+            return !empty($result);
+    }
 }
 
 
