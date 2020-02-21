@@ -88,8 +88,16 @@ public function createShareUrl($folder,$task) //シェアボタン押下時にUR
         return $share_url;
 } 
 
-public function showShareTask() //シェアしたURLを踏んだ人がログインしていなくてもtaskを閲覧できる
+public function showShareTask($folder,$task) //シェアしたURLを踏んだ人がログインしていなくてもtaskを閲覧できる
 {
+    $share_task = Task::where('id',$task)->where('share_flg',1)->get();
     
+    if(empty($share_task))
+    {
+        abort(404);
+    }
+    return view('tasks/share_task_show',[
+        'task' => $share_task,
+    ]);
 }
 }
