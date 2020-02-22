@@ -90,7 +90,7 @@ public function createShareUrl($folder,$task) //シェアボタン押下時にUR
 
 public function showShareTask($folder,$task) //シェアしたURLを踏んだ人がログインしていなくてもtaskを閲覧できる
 {
-    $share_task = Task::where('id',$task)->where('share_flg',1)->get();
+    $share_task = Task::where('id',$task)->where('share_flg',1)->first();
     
     if(empty($share_task))
     {
