@@ -59,7 +59,7 @@
                   <a href="{{ route('tasks.shareurl',[
                     'task'=>$task->id,
                     'folder'=>$folder->id
-                    ])}}">シェアする</a>
+                    ])}}">シェア</a>
                 </td>
 
               </tr>
