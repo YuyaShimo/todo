@@ -9,9 +9,14 @@ use App\Http\Requests\EditTask;
 use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Repositories\Task\TaskRepositoryInterface;
 
 class TaskController extends Controller
 {
+    public function __construct(TaskRepositoryInterface $task_repo)
+    {
+        $this->task_repo = $task_repo;
+    }
 
     public function index(Folder $folder)
     {
@@ -79,8 +84,7 @@ private function checkRelation(Folder $folder, Task $task)
 
 public function createShareUrl($folder,$task) //シェアボタン押下時にURLを生成
 {
-    $tasks = new Task();
-    $tasks->updateShareStat($task);
+    $this->task_repo->updateShareStat($task);
     $share_url = route('tasks.shareshow',[
         'task' => $task,
         'folder' => $folder
