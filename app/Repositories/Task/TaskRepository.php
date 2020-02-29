@@ -3,7 +3,6 @@
 namespace App\Repositories\Task;
 
 use App\Task;
-use Carbon\Carbon;
 
 class TaskRepository implements TaskRepositoryInterface
 {
