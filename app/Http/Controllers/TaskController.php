@@ -87,16 +87,26 @@ class TaskController extends Controller
     public function createShareUrl($folder,$task) //シェアボタン押下時にURLを生成
     {
         $this->task_repo->updateShareStat($task);
-        $share_url = route('tasks.shareshow',[
+
+        $task_info_array = ([
             'task' => $task,
-            'folder' => $folder
+            'folders' => $folder
             ]);
+
+        $crypt_key = encrypt($task_info_array);
+
+        $share_url = route('tasks.shareshow',[
+                'crypt_key' => $crypt_key,
+            ]);
+
         return $share_url;
     } 
 
-    public function showShareTask($folder,$task) //シェアしたURLを踏んだ人がログインしていなくてもtaskを閲覧できる
+    public function showShareTask($crypt_key) //シェアしたURLを踏んだ人がtaskを閲覧できる（未ログインでも）
     {
-        $share_task = Task::where('id',$task)->where('share_flg',1)->first();
+        $task_info = decrypt($crypt_key);
+
+        $share_task = Task::where('id',$task_info['task'])->where('share_flg',1)->first();
         
         if(empty($share_task))
         {
