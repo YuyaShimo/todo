@@ -27,7 +27,10 @@ Route::group(['middleware' => 'auth'], function() {
     //シェアボタン押下時のルーティング
     Route::get('/folders/{folder}/tasks/{task}/share','TaskController@createShareUrl')->name('tasks.shareurl');
     //タスク閲覧のためのURL
-    Route::get('/folders/{folder}/tasks/{task}','TaskController@showShareTask')->name('tasks.shareshow');
+    Route::get('/folders/{crypt_key}','TaskController@showShareTask')->name('tasks.shareshow');
 });
+
+//タスク閲覧のためのURL
+Route::get('/folders/{crypt_key}','TaskController@showShareTask')->name('tasks.shareshow');
 
 Auth::routes();
