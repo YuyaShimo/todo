@@ -31,6 +31,6 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 //タスク閲覧のためのURL
-Route::get('/folders/{crypt_key}','TaskController@showShareTask')->name('tasks.shareshow');
+Route::get('/tasks/{crypt_key}','TaskController@showShareTask')->name('tasks.shareshow');
 
 Auth::routes();
