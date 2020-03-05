@@ -26,7 +26,7 @@ class RenameShareFlgToIsSharedOnTasksTable extends Migration
     public function down()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->dropColumn('is_shared', 'share_flg'); 
+            $table->renameColumn('is_shared', 'share_flg'); 
         });
     }
 }

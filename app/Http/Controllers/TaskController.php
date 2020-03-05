@@ -106,7 +106,7 @@ class TaskController extends Controller
     {
         $task_info = decrypt($crypt_key);
 
-        $share_task = Task::where('id',$task_info['task'])->where('share_flg',1)->first();
+        $share_task = Task::where('id',$task_info['task'])->where('is_shared',1)->first();
         
         if(empty($share_task))
         {

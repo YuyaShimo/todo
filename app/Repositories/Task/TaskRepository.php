@@ -13,10 +13,10 @@ class TaskRepository implements TaskRepositoryInterface
     $this->task = $task;
   }
 
-  public function updateShareStat($id,$status=1)  //シェアされたのかを判別するカラムである（share_flg）を更新するメソッド
+  public function updateShareStat($id,$status=1)  //シェアされたのかを判別するカラムである（is_shared）を更新するメソッド
   {
-      $result = $this->task->where('id',$id)->where('share_flg','!=',1)->update([
-          'share_flg' => $status
+      $result = $this->task->where('id',$id)->where('is_shared','!=',1)->update([
+          'is_shared' => $status
           ]);
       return !empty($result);
   }
