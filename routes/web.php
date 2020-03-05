@@ -26,8 +26,6 @@ Route::group(['middleware' => 'auth'], function() {
     Route::post('/users/edit','UsersController@updateUsers')->name('users.updateUsers');
     //シェアボタン押下時のルーティング
     Route::get('/folders/{folder}/tasks/{task}/share','TaskController@createShareUrl')->name('tasks.shareurl');
-    //タスク閲覧のためのURL
-    Route::get('/folders/{crypt_key}','TaskController@showShareTask')->name('tasks.shareshow');
 });
 
 //タスク閲覧のためのURL
