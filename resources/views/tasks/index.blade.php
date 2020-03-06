@@ -55,6 +55,13 @@
                     編集
                   </a>
                 </td>
+                 <td>
+                  <a href="{{ route('tasks.shareurl',[
+                    'task'=>$task->id,
+                    'folder'=>$folder->id
+                    ])}}">シェア</a>
+                </td>
+
               </tr>
             @endforeach
             </tbody>

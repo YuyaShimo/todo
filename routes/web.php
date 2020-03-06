@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TaskController;
+
 Route::group(['middleware' => 'auth'], function() {
     Route::get('/', 'HomeController@index')->name('home');
 
@@ -22,6 +24,11 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/users/edit', 'UsersController@editUsers')->name('users.editUsers');
     //ユーザー名変更のルーティング
     Route::post('/users/edit','UsersController@updateUsers')->name('users.updateUsers');
+    //シェアボタン押下時のルーティング
+    Route::get('/folders/{folder}/tasks/{task}/share','TaskController@createShareUrl')->name('tasks.shareurl');
 });
+
+//タスク閲覧のためのURL
+Route::get('/tasks/{crypt_key}','TaskController@showShareTask')->name('tasks.shareshow');
 
 Auth::routes();

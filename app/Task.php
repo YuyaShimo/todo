@@ -15,23 +15,25 @@ class Task extends Model
 
     public function getStatusLabelAttribute()
     {
-        $status = $this->attributes['status'];
-
-        if(!isset(self::STATUS[$status])) {
-            return '';
-        }
-
-        return self::STATUS[$status]['label'];
+      $status = $this->attributes['status'];
+  
+      if(!isset(self::STATUS[$status])) {
+          return '';
+      }
+  
+      return self::STATUS[$status]['label'];
     }
-    public function getStatusClassAttribute()
-    {
+  
+      public function getStatusClassAttribute()
+      {
         $status = $this->attributes['status'];
-
+  
         if(!isset(self::STATUS[$status])) {
             return '';
         }
         return self::STATUS[$status]['class'];
-    }
+      }
+  
     public function getFormattedDueDateAttribute()
     {
         return Carbon::createFromFormat('Y-m-d', $this->attributes['due_date'])
